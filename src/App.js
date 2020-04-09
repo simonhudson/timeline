@@ -12,7 +12,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPerson: null,
             currentYear: moment().year()
         };
     }
@@ -27,7 +26,7 @@ class App extends Component {
 
     componentDidMount = () => {
         this.mutateData();
-        this.setState({ people });
+        this.setState({ people, currentPerson: people[0] });
     };
 
     setCurrentPerson = e => {

@@ -7,7 +7,7 @@ import YearMarker from './yearMarker';
 
 const generateYearMarkers = props => {
     let yearMarkers = [];
-    for (let x = props.currentYear; x >= props.currentPerson.birthYear; x--) {
+    for (let x = props.currentPerson.birthYear; x <= props.currentYear; x++) {
         yearMarkers.push(<YearMarker year={x} />);
     }
     return yearMarkers;
@@ -27,7 +27,7 @@ const Timeline = props => {
     return (
         <div data-test="timeline">
             <h2>{currentPerson.fullName}</h2>
-            {generateYearMarkers(props)}
+            <div className="timeline">{generateYearMarkers(props)}</div>
         </div>
     );
 };

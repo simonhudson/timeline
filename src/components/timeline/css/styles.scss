@@ -1,32 +1,30 @@
 @import 'assets/css/styles';
 
-$alertTypes: 'info', 'warning', 'error', 'success';
+.timeline {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
 
-.alert {
-	@include border-radius();
-	@include padding();
-
-	@each $type in $alertTypes {
-		&--#{$type} {
-			background-color: rgba(palette(alert, #{$type}), 0.20);
-			color: palette(alert, #{$type});
-		}
-
-		&.alert--has-icon {
-			padding-left: rem($spacing * 3);
-			position: relative;
-
-			.fa {
-				@include position-tl($spacing);
-				font-size: rem($spacing * 1.5);
-			}
-
-		}
-
+	&:after {
+		@include position-tl(0, center);
+		background-color: #bcbcbb;
+		content: '';
+		display: block;
+		height: 100%;
+		width: rem(2px);
+		z-index: 0;
 	}
 
 }
 
-.alert p:last-of-type {
-	@include no-margin();
+.timeline__year-marker {
+	@include margin-b-lg();
+	background: #ddd;
+	border: 1px solid #bcbcbb;
+	border-radius: 100%;
+	padding: rem(19px) rem(12px);
+	text-align: center;
+	z-index: 1;
 }
