@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import Timeline from './index';
+import SelectPerson from './index';
 const cloneDeep = require('lodash/cloneDeep');
 import {
     assertElementExists,
@@ -13,12 +13,13 @@ const baseProps = {
     people: [
         { firstName: 'Joe', lastName: 'Bloggs', dateOfBirth: '1980-01-01' },
         { firstName: 'Jane', lastName: 'Doe', dateOfBirth: '1982-08-08' }
-    ]
+    ],
+    onChange: jest.fn()
 };
 
-describe('Timeline', () => {
+describe('SelectPerson', () => {
     let objectUnderTest;
-    const selector = `div[data-test="timeline"]`;
+    const selector = `select[data-test="select-person"]`;
 
     afterEach(() => (!!objectUnderTest ? objectUnderTest.unmount() : null));
 
@@ -36,6 +37,20 @@ describe('Timeline', () => {
         assertElementDoesNotExist(objectUnderTest, selector);
     });
 
+    it('should return null if no onChange prop is passed', () => {
+        const props = cloneDeep(baseProps);
+        delete props.onChange;
+        initialise(props);
+        assertElementDoesNotExist(objectUnderTest, selector);
+    });
+
+    it('should return null if onChange prop is not a function', () => {
+        const props = cloneDeep(baseProps);
+        props.onChange = 'string';
+        initialise(props);
+        assertElementDoesNotExist(objectUnderTest, selector);
+    });
+
     it('should render as expected', () => {
         const props = cloneDeep(baseProps);
         initialise(props);
@@ -43,5 +58,5 @@ describe('Timeline', () => {
     });
 
     const initialise = props =>
-        (objectUnderTest = mount(<Timeline {...props} />));
+        (objectUnderTest = mount(<SelectPerson {...props} />));
 });
