@@ -7,12 +7,12 @@ const YearMarker = props => {
     if (!props || typeof props.year !== 'number') return null;
 
     return (
-        <div
+        <button
             className="timeline__year-marker"
             data-test="timeline__year-marker"
         >
             {props.year}
-        </div>
+        </button>
     );
 };
 

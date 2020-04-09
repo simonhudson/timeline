@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { expect } from 'chai';
-import YearMarker from './year-marker';
+import Events from './events';
 const cloneDeep = require('lodash/cloneDeep');
 import {
     assertElementExists,
@@ -11,25 +11,28 @@ import {
 } from '&/tests/utilities';
 
 const baseProps = {
-    year: 1981
+    events: [
+        { title: 'Event 1', year: '1984', content: 'Content 1' },
+        { title: 'Event 2', year: '1986', content: 'Content 2' }
+    ]
 };
 
-describe('YearMarker', () => {
+describe('Events', () => {
     let objectUnderTest;
-    const selector = `button[data-test="timeline__year-marker"]`;
+    const selector = `div[data-test="timeline__events"]`;
 
     afterEach(() => (!!objectUnderTest ? objectUnderTest.unmount() : null));
 
-    it('should return null if no year prop passed', () => {
+    it('should return null if no events prop passed', () => {
         const props = cloneDeep(baseProps);
-        delete props.year;
+        delete props.events;
         initialise(props);
         assertElementDoesNotExist(objectUnderTest, selector);
     });
 
-    it('should return null if year prop is not a number', () => {
+    it('should return null if events prop is an empty array', () => {
         const props = cloneDeep(baseProps);
-        props.year = true;
+        props.events = [];
         initialise(props);
         assertElementDoesNotExist(objectUnderTest, selector);
     });
@@ -38,9 +41,8 @@ describe('YearMarker', () => {
         const props = cloneDeep(baseProps);
         initialise(props);
         assertElementExists(objectUnderTest, selector);
-        expect(objectUnderTest.find(selector).text()).to.equal('1981');
     });
 
     const initialise = props =>
-        (objectUnderTest = mount(<YearMarker {...props} />));
+        (objectUnderTest = mount(<Events {...props} />));
 });

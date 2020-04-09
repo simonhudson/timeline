@@ -5,10 +5,15 @@ import './css/styles.scss';
 import { hasItems } from '~/utilities/array';
 import YearMarker from './year-marker';
 
+const getEventsForYear = (props, year) =>
+    props.currentPerson.events.filter(event => event.year == year);
+
 const generateYearMarkers = props => {
     let yearMarkers = [];
     for (let x = props.currentPerson.birthYear; x <= props.currentYear; x++) {
-        yearMarkers.push(<YearMarker year={x} />);
+        yearMarkers.push(
+            <YearMarker events={getEventsForYear(props, x)} year={x} />
+        );
     }
     return yearMarkers;
 };
