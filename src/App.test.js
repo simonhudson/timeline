@@ -12,11 +12,7 @@ describe('App', () => {
 
     it('should render as expected', () => {
         initialise();
-        assertElementExists(objectUnderTest, [
-            'Header',
-            'MainNavigation',
-            'Footer'
-        ]);
+        assertElementExists(objectUnderTest);
     });
 
     const initialise = () => (objectUnderTest = mount(<App />));

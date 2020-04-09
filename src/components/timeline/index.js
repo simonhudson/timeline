@@ -4,7 +4,7 @@ import React from 'react';
 import './css/styles.scss';
 
 const Timeline = () => {
-    return <p>timeline</p>;
+    return <div data-test="timeline">timeline</div>;
 };
 
 export default Timeline;
