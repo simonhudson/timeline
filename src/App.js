@@ -12,13 +12,15 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPerson: null
+            currentPerson: null,
+            currentYear: moment().year()
         };
     }
 
     mutateData = () => {
         people.forEach(person => {
             person.age = moment().diff(moment(person.dateOfBirth), 'years');
+            person.birthYear = moment(person.dateOfBirth).year();
             person.fullName = `${person.firstName} ${person.lastName}`;
         });
     };
@@ -28,14 +30,11 @@ class App extends Component {
         this.setState({ people });
     };
 
-    setCurrentPerson = e => this.setState({ currentPerson: e.target.value });
-
-    getCurrentPerson = () => {
-        if (this.state.people) {
-            return this.state.people.filter(
-                person => person.fullName === this.state.currentPerson
-            )[0];
-        }
+    setCurrentPerson = e => {
+        const currentPerson = this.state.people.filter(
+            person => person.fullName === e.target.value
+        )[0];
+        this.setState({ currentPerson });
     };
 
     render = () => {
@@ -43,9 +42,6 @@ class App extends Component {
         return (
             <>
                 <h1>Timeline</h1>
-                {this.state.currentPerson && (
-                    <h2>{this.state.currentPerson}</h2>
-                )}
                 <SelectPerson
                     onChange={this.setCurrentPerson}
                     people={state.people}
@@ -53,6 +49,7 @@ class App extends Component {
                 <Timeline
                     people={state.people}
                     currentPerson={state.currentPerson}
+                    currentYear={state.currentYear}
                 />
             </>
         );
