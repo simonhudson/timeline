@@ -37,8 +37,18 @@
 	}
 
 	button {
+		background: #fff;
 		border: 0;
 		padding: rem(19px) rem(12px);
+	}
+
+	&:nth-of-type(2n) {
+
+		.timeline__events {
+			@include position-tl();
+			transform: translateX(-110%);
+		}
+	
 	}
 
 }
@@ -51,10 +61,10 @@
 	@include border-radius();
 	@include box-shadow();
 	@include padding();
-	@include position-tr(0, 10px);
+	@include position-tr();
 	background: #fff;
 	text-align: left;
-	transform: translateX(120%);
+	transform: translateX(110%);
 	width: 30vw;
 }
 
