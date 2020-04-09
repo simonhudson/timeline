@@ -3,7 +3,7 @@
 import React from 'react';
 import './css/styles.scss';
 import { hasItems } from '~/utilities/array';
-import YearMarker from './yearMarker';
+import YearMarker from './year-marker';
 
 const generateYearMarkers = props => {
     let yearMarkers = [];
