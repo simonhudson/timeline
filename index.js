@@ -13,16 +13,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 
+app.set('view engine', 'hbs');
 app.engine(
     'hbs',
     expressHandlebars({
-        layoutsDir: path.join(__dirname, './src/views/layouts'),
+        layoutsDir: path.join(__dirname, '../src/views/layouts'),
         defaultLayout: 'main',
         extname: 'hbs'
     })
 );
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, './src/views/pages'));
+app.set('views', path.join(__dirname, '../src/views/pages'));
 
 app.get('/', (req, res) => res.render('index'));
 
