@@ -12,7 +12,7 @@ const generateYearMarkers = props => {
     let yearMarkers = [];
     for (let x = props.currentPerson.birthYear; x <= props.currentYear; x++) {
         yearMarkers.push(
-            <YearMarker events={getEventsForYear(props, x)} year={x} />
+            <YearMarker key={x} events={getEventsForYear(props, x)} year={x} />
         );
     }
     return yearMarkers;
