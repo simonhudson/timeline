@@ -15,6 +15,8 @@ const baseProps = {
         { firstName: 'Jane', lastName: 'Doe', dateOfBirth: '1982-08-08' }
     ]
 };
+baseProps.currentPerson = baseProps.people[0];
+baseProps.currentYear = 2020;
 
 describe('Timeline', () => {
     let objectUnderTest;
@@ -32,6 +34,20 @@ describe('Timeline', () => {
     it('should return null if people prop is empty array', () => {
         const props = cloneDeep(baseProps);
         props.people = [];
+        initialise(props);
+        assertElementDoesNotExist(objectUnderTest, selector);
+    });
+
+    it('should return null if no currentPerson prop is passed', () => {
+        const props = cloneDeep(baseProps);
+        delete props.currentPerson;
+        initialise(props);
+        assertElementDoesNotExist(objectUnderTest, selector);
+    });
+
+    it('should return null if no currentYear prop is passed', () => {
+        const props = cloneDeep(baseProps);
+        delete props.currentYear;
         initialise(props);
         assertElementDoesNotExist(objectUnderTest, selector);
     });
