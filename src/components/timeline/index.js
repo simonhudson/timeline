@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import './css/styles.scss';
 import { hasItems } from '~/utilities/array';
 import YearMarker from './year-marker';
@@ -13,23 +13,32 @@ const generateYearMarkers = props => {
     return yearMarkers;
 };
 
-const Timeline = props => {
-    if (
-        !props ||
-        !hasItems(props.people) ||
-        !props.currentPerson ||
-        !props.currentYear
-    )
-        return null;
+class Timeline extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-    const { currentPerson } = props;
+    componentDidMount = () => {};
 
-    return (
-        <div data-test="timeline">
-            <h2>{currentPerson.fullName}</h2>
-            <div className="timeline">{generateYearMarkers(props)}</div>
-        </div>
-    );
-};
+    render = () => {
+        const { props, state } = this;
+
+        if (
+            !props ||
+            !hasItems(props.people) ||
+            !props.currentPerson ||
+            !props.currentYear
+        )
+            return null;
+
+        return (
+            <div data-test="timeline">
+                <h2>{props.currentPerson.fullName}</h2>
+                <div className="timeline">{generateYearMarkers(props)}</div>
+            </div>
+        );
+    };
+}
 
 export default Timeline;

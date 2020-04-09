@@ -20,11 +20,15 @@
 }
 
 .timeline__year-marker {
-	@include margin-b-lg();
 	background: #ddd;
 	border: 1px solid #bcbcbb;
 	border-radius: 100%;
 	padding: rem(19px) rem(12px);
 	text-align: center;
 	z-index: 1;
+
+	&:not(:last-of-type) {
+		@include margin-b-lg();
+	}
+
 }
