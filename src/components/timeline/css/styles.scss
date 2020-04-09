@@ -1,0 +1,32 @@
+@import 'assets/css/styles';
+
+$alertTypes: 'info', 'warning', 'error', 'success';
+
+.alert {
+	@include border-radius();
+	@include padding();
+
+	@each $type in $alertTypes {
+		&--#{$type} {
+			background-color: rgba(palette(alert, #{$type}), 0.20);
+			color: palette(alert, #{$type});
+		}
+
+		&.alert--has-icon {
+			padding-left: rem($spacing * 3);
+			position: relative;
+
+			.fa {
+				@include position-tl($spacing);
+				font-size: rem($spacing * 1.5);
+			}
+
+		}
+
+	}
+
+}
+
+.alert p:last-of-type {
+	@include no-margin();
+}
