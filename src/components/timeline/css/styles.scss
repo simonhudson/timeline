@@ -9,21 +9,22 @@
 
 	&:after {
 		@include position-tl(0, center);
-		background-color: #bcbcbb;
+		background-color: #dfdfdf;
 		content: '';
 		display: block;
 		height: 100%;
-		width: rem(2px);
+		width: 3px;
 		z-index: 0;
 	}
 
 }
 
 .timeline__year-marker {
-	background: #ddd;
-	border: 1px solid #bcbcbb;
+	@include strong();
+	background: #fff;
+	border: 3px solid #dfdfdf;
 	border-radius: 100%;
-	padding: rem(19px) rem(12px);
+	position: relative;
 	text-align: center;
 	z-index: 1;
 
@@ -31,4 +32,33 @@
 		@include margin-b-lg();
 	}
 
+	&, & button {
+		border-radius: 100%;
+	}
+
+	button {
+		border: 0;
+		padding: rem(19px) rem(12px);
+	}
+
+}
+
+.timeline__year-marker--has-items {
+	border-color: palette(primary, a);
+}
+
+.timeline__events {
+	@include border-radius();
+	@include box-shadow();
+	@include padding();
+	@include position-tr(0, 10px);
+	background: #fff;
+	text-align: left;
+	transform: translateX(120%);
+	width: 30vw;
+}
+
+.timeline__event-title {
+	@include no-margin();
+	@include strong();
 }

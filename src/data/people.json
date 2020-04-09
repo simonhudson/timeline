@@ -12,18 +12,20 @@
             {
                 "year": "1984",
                 "title": "Moved to Aston",
-                "content": "The Hudson family moved to Aston-on-Trent in Auguest 1984"
+                "content": "The Hudson family moved to Aston-on-Trent in August 1984"
             }
         ]
     },
     {
         "firstName": "Jodie",
         "lastName": "Barker",
-        "dateOfBirth": "1983-06-01" 
+        "dateOfBirth": "1983-06-01",
+        "events": []
     },
     {
         "firstName": "Henry",
         "lastName": "Hudson",
-        "dateOfBirth": "2018-04-30" 
+        "dateOfBirth": "2018-04-30",
+        "events": []
     }
 ]
