@@ -4,8 +4,11 @@ import { expect } from 'chai';
 
 const assertElementExists = (objectUnderTest, elements) => {
     const doAssertion = element => {
-        expect(objectUnderTest.exists(element)).to.be.true;
-        expect(objectUnderTest.find(element).length).to.equal(1);
+        expect(objectUnderTest).not.to.be.null;
+        if (element) {
+            expect(objectUnderTest.exists(element)).to.be.true;
+            expect(objectUnderTest.find(element).length).to.equal(1);
+        }
     };
 
     if (Array.isArray(elements))
@@ -15,8 +18,10 @@ const assertElementExists = (objectUnderTest, elements) => {
 
 const assertElementDoesNotExist = (objectUnderTest, elements) => {
     const doAssertion = element => {
-        expect(objectUnderTest.exists(elements)).to.be.false;
-        expect(objectUnderTest.find(elements).length).to.equal(0);
+        if (element) {
+            expect(objectUnderTest.exists(elements)).to.be.false;
+            expect(objectUnderTest.find(elements).length).to.equal(0);
+        }
     };
 
     if (Array.isArray(elements))
