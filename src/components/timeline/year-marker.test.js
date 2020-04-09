@@ -16,7 +16,7 @@ const baseProps = {
 
 describe('YearMarker', () => {
     let objectUnderTest;
-    const selector = `button[data-test="timeline__year-marker"]`;
+    const selector = `div[data-test="timeline__year-marker"]`;
 
     afterEach(() => (!!objectUnderTest ? objectUnderTest.unmount() : null));
 
@@ -39,6 +39,13 @@ describe('YearMarker', () => {
         initialise(props);
         assertElementExists(objectUnderTest, selector);
         expect(objectUnderTest.find(selector).text()).to.equal('1981');
+    });
+
+    it('should handle click event', () => {
+        const props = cloneDeep(baseProps);
+        initialise(props);
+        objectUnderTest.find('button').simulate('click');
+        expect(props.onClick).toHaveBeenCalledOnce;
     });
 
     const initialise = props =>
