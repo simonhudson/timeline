@@ -7,6 +7,7 @@ const Marker = styled.div`
 	background: #fff;
 	border: 5px solid #dfdfdf;
 	border-radius: 100%;
+	position: relative;
 	text-align: center;
 	z-index: 1;
 
