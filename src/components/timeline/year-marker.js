@@ -3,12 +3,7 @@
 import React, { Component } from 'react';
 import Events from './events';
 import hasItems from '~/utilities/array/hasItems';
-
-const setClassName = (props) => {
-	const classNames = ['timeline__year-marker'];
-	if (hasItems(props.events)) classNames.push('timeline__year-marker--has-items');
-	return classNames.join(' ');
-};
+import { Marker, Button } from './year-marker.styles';
 
 class YearMarker extends Component {
 	constructor(props) {
@@ -30,10 +25,10 @@ class YearMarker extends Component {
 		if (!props || typeof props.year !== 'number') return null;
 
 		return (
-			<div className={setClassName(props)} data-test="timeline__year-marker">
-				<button onClick={this.toggleEvents}>{props.year}</button>
+			<Marker hasItems={hasItems(props.events)} data-test="timeline__year-marker">
+				<Button onClick={this.toggleEvents}>{props.year}</Button>
 				{state.showEvents && <Events events={props.events} />}
-			</div>
+			</Marker>
 		);
 	};
 }

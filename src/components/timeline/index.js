@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import YearMarker from './year-marker';
 import hasItems from '~/utilities/array/hasItems';
+import { Wrap } from './index.styles';
 
 const getEventsForYear = (props, year) => props.currentPerson.events.filter((event) => event.year == year);
 
@@ -30,7 +31,7 @@ class Timeline extends Component {
 		return (
 			<div data-test="timeline">
 				<h2>{props.currentPerson.fullName}</h2>
-				<div className="timeline">{generateYearMarkers(props)}</div>
+				<Wrap>{generateYearMarkers(props)}</Wrap>
 			</div>
 		);
 	};

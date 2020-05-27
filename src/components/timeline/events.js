@@ -2,21 +2,22 @@
 
 import React from 'react';
 import hasItems from '~/utilities/array/hasItems';
+import { Wrap, Title } from './events.styles';
 
 const Events = (props) => {
 	if (!props || !hasItems(props.events)) return null;
 
 	return (
-		<div className="timeline__events" data-test="timeline__events">
+		<Wrap data-test="timeline__events">
 			{props.events.map((event, index) => {
 				return (
 					<div key={index}>
-						<p className="timeline__event-title">{event.title}</p>
+						<Title>{event.title}</Title>
 						{event.content && <p>{event.content}</p>}
 					</div>
 				);
 			})}
-		</div>
+		</Wrap>
 	);
 };
 
