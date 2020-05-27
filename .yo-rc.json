@@ -1,5 +1,5 @@
 {
-  "generator-react": {
+  "generator-next-app": {
     "projectName": "Timeline",
     "projectNameSlug": "timeline",
     "copyUtilities": "n"

@@ -1,30 +1,37 @@
 'use strict';
 
+import axios from 'axios';
+
 const COMMON_OPTIONS = {
-    dataType: 'json',
-    mode: 'cors'
+	dataType: 'json',
+	mode: 'cors',
 };
 
-const makeRequest = (endpoint, method) => {
-    if (!endpoint || !method) return null;
-    const options = { ...COMMON_OPTIONS, method };
-    return new Promise((resolve, reject) => {
-        fetch(`data/${endpoint}.json`, options)
-            .then(response => response.json())
-            .then(data => resolve(data))
-            .catch(error => reject(error));
-    });
-};
+async function makeRequest(endpoint, method) {
+	let responseObj = {
+		err: null,
+	};
+	if (!endpoint || !method) return null;
+	const options = { ...COMMON_OPTIONS, method };
+	try {
+		const res = await axios[method.toLowerCase()](`${process.env.API_URL}/${endpoint}`, options);
+		responseObj = { ...responseObj, ...res };
+		return responseObj;
+	} catch (err) {
+		responseObj.err = err;
+		return responseObj;
+	}
+}
 
-export function get(endpoint) {
-    return makeRequest(endpoint, 'GET');
+export async function get(endpoint) {
+	return await makeRequest(endpoint, 'GET');
 }
-export function post(endpoint) {
-    return makeRequest(endpoint, 'POST');
+export async function post(endpoint) {
+	return await makeRequest(endpoint, 'POST');
 }
-export function put(endpoint) {
-    return makeRequest(endpoint, 'PUT');
+export async function put(endpoint) {
+	return await makeRequest(endpoint, 'PUT');
 }
-export function patch(endpoint) {
-    return makeRequest(endpoint, 'PATCH');
+export async function patch(endpoint) {
+	return await makeRequest(endpoint, 'PATCH');
 }

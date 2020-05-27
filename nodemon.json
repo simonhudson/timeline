@@ -2,8 +2,8 @@
 	"restartable": "rs",
 	"verbose": false,
 	"watch": [
-		"src/",
-		"config/"
+		"public/",
+		"src/"
 	],
-	"ext": "js css html css scss json ejs hbs"
+	"ext": "js css scss json"
 }

@@ -26,30 +26,26 @@
 
 import { breakpoints, routes } from '../config';
 
-Cypress.Commands.add('openPage', page => {
-    cy.visit(routes[page]);
+/* eslint-disable no-undef */
+
+Cypress.Commands.add('openPage', (page) => {
+	cy.visit(routes[page]);
 });
 
 Cypress.Commands.add('setMobile', (isLandscape = false) => {
-    const width = isLandscape
-        ? breakpoints.phone.height
-        : breakpoints.phone.width;
-    const height = isLandscape
-        ? breakpoints.phone.width
-        : breakpoints.phone.height;
-    cy.viewport(width, height);
+	const width = isLandscape ? breakpoints.phone.height : breakpoints.phone.width;
+	const height = isLandscape ? breakpoints.phone.width : breakpoints.phone.height;
+	cy.viewport(width, height);
 });
 
 Cypress.Commands.add('setTablet', (isLandscape = false) => {
-    const width = isLandscape
-        ? breakpoints.tablet.height
-        : breakpoints.tablet.width;
-    const height = isLandscape
-        ? breakpoints.tablet.width
-        : breakpoints.tablet.height;
-    cy.viewport(width, height);
+	const width = isLandscape ? breakpoints.tablet.height : breakpoints.tablet.width;
+	const height = isLandscape ? breakpoints.tablet.width : breakpoints.tablet.height;
+	cy.viewport(width, height);
 });
 
 Cypress.Commands.add('setDesktop', () => {
-    cy.viewport(breakpoints.desktop.width, breakpoints.desktop.height);
+	cy.viewport(breakpoints.desktop.width, breakpoints.desktop.height);
 });
+
+/* eslint-enable no-undef */
