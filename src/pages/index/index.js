@@ -5,7 +5,6 @@ import people from '~/data/people';
 import Timeline from '~/components/timeline';
 import SelectPerson from '~/components/select-person';
 const moment = require('moment');
-
 class Home extends Component {
 	constructor(props) {
 		super(props);
